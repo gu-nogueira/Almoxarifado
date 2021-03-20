@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Login</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<link rel="stylesheet" href="css/reset.css" type="text/css">
+		<link rel="stylesheet" href="css/style.css" type="text/css">
+	</head>
+
+	<body>
+
+		<div class="login">
+			<h1>Controle de Almoxarifado</h1>
+			<form action="php/login.php" method="post">
+				<label for="Usuario">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="Usuario" placeholder="Usuario" id="Usuario" required>
+				<label for="Senha">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="Senha" placeholder="Senha" id="Senha" required>
+				<input type="submit" value="Login">
+			</form>
+		</div>
+    
+	</body>
+
+</html>
