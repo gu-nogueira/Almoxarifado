@@ -21,14 +21,8 @@ Projeto para o 5º Ciclo de ADS
 
 ## Alterações
 
-20/03/2021
-
-* Feito o sistema de login; (backend)
-
-22/03/2021
-
 * lógica de sessão de usuário; (backend)
 * tela inicial; (frontend)
 * tela de perfil do usuário; (frontend)
 * menu lateral; (frontend)
-
+* alterado sistema de navegação e adaptado css para iframe; (frontend)

@@ -85,6 +85,12 @@ background-color: #2868c7;
 	color: #eaebed;
 	font-weight: normal;
 }
+
+.navtop div h1:hover {
+  color: white;
+  transition: 400ms;
+}
+
 .navtop div a {
 	padding: 0 20px;
 	color: #c1c4c8;
@@ -123,6 +129,13 @@ background-color: #2868c7;
   font-size: 1.35em;
 }
 
+.sidemenu-button:hover {
+  background-color: #eaebed;
+  border: 1px    #eaebed;
+  color: #2f3947;
+  transition: 400ms;
+}
+
 .sidemenu-close {
   font-size:18px;
 }
@@ -144,6 +157,11 @@ background-color: #2868c7;
 body.loggedin {
 	background-color: #f3f4f7;
 }
+
+body.screen {
+	background-color: #fff;
+  padding: 5px;
+}
 .content {
 	width: 1000px;
 	margin: 0 auto;
@@ -155,11 +173,15 @@ body.loggedin {
 	border-bottom: 1px solid #e0e0e3;
 	color: #4a536e;
 }
-.content > p, .content > div {
+.card {
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
 	margin: 25px 0;
 	padding: 25px;
 	background-color: #fff;
+}
+
+.card p {
+  border-bottom: 1px solid #e0e0e3;
 }
 .content > p table td, .content > div table td {
 	padding: 5px;
@@ -169,7 +191,7 @@ body.loggedin {
 	color: #4a536e;
 	padding-right: 15px;
 }
-.content > div p {
-	padding: 5px;
-	margin: 0 0 10px 0;
+.screen p {
+	padding: 0 0 20px 0;
+  border-bottom: 1px solid #e0e0e3;
 }
