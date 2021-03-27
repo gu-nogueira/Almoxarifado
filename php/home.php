@@ -18,6 +18,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body class="loggedin">
+
     <!-- Cabeçalho -->
 		<nav class="navtop">
     <button class="sidemenu-button" onclick="openmenu()">☰</button>
@@ -31,25 +32,29 @@ if (!isset($_SESSION['loggedin'])) {
   <!-- Sidebar -->
   <div class="sidemenu" style="display:none" id="sidebar">
     <button onclick="closemenu()" class="sidemenu-itens sidemenu-close">Close &times;</button>
-    <a href="#" class="sidemenu-itens">Fornecedores</a>
+    <a href="welcome.php" target="iframe_1" class="sidemenu-itens">Fornecedores</a>
     <a href="#" class="sidemenu-itens">Produtos</a>
     <a href="#" class="sidemenu-itens">Requisições</a>
-    <a href="#" class="sidemenu-itens"></a>
+    <a href="#" class="sidemenu-itens">Usuários</a>
   </div>
 
 		<div class="content">
 			<h2>Início</h2>
-			<p>Seja bem vindo, <?=$_SESSION['name']?>!</p>
+			<div class="card">
+				<iframe src="welcome.php" name="iframe_1" width="940px" height="500px" frameborder="0px">  </iframe>	
+			</div>
 		</div>
 
     <script>
+
+		// Movimento do menu lateral
     function openmenu() {
       document.getElementById("sidebar").style.display = "flex";
     } 
-
     function closemenu() {
       document.getElementById("sidebar").style.display = "none";
     }
+
     </script>
 
 	</body>
