@@ -195,3 +195,29 @@ body.screen {
 	padding: 0 0 20px 0;
   border-bottom: 1px solid #e0e0e3;
 }
+
+.screen .container {
+  padding: 20px;
+
+}
+
+.screen .container h1 {
+  font-size: 1.25em;
+}
+
+.screen .container label {
+  width: 200px;
+}
+
+.screen .container input {
+  margin: 10px;
+}
+
+.screen .container .button {
+  background-color:#3274d6;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 15px 10px 15px;
+  margin: 10px 0 0 0 !important;
+}

@@ -26,3 +26,5 @@ Projeto para o 5º Ciclo de ADS
 * tela de perfil do usuário; (frontend)
 * menu lateral; (frontend)
 * alterado sistema de navegação e adaptado css para iframe; (frontend)
+* criado tela de cadastro de usuário; (frontend)
+* criada lógica para inserção dos dados no banco; (frontend)
