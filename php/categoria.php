@@ -19,17 +19,11 @@ if (!isset($_SESSION['loggedin'])) {
 	</head>
 	<body class="screen">
       <div class="container">
-				<h1>Cadastro de usuário</h1>
+				<h1>Cadastro de Categoria</h1>
         <br>
         <form action="" method="post">
-        <label for="user">Usuário</label>
-        <input type="text" id="user" name="user" placeholder="Usuário">
-        <br>
-        <label for="password">Senha</label>
-        <input type="password" id="password" name="password" placeholder="Senha">
-        <br>
-        <label for="contact">Contato</label>
-        <input type="text" id="contact" name="contact" placeholder="Contato">
+        <label for="user">Descrição</label>
+        <input type="text" id="desc" name="desc" placeholder="Descrição">
         <br>
         <input class="button" type="submit" name="submit" value="Cadastrar">
         </form>
@@ -39,14 +33,12 @@ if (!isset($_SESSION['loggedin'])) {
 
 <?php
   if (isset($_POST['submit'])) {
-    $user = $_POST['user'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $contact = $_POST['contact'];
+    $desc = $_POST['desc'];
 
     include('connectdb.php');
 
-    $sql = "INSERT INTO usuarios (Usuario, Senha, Contato)
-    VALUES ('$user', '$password', '$contact')";
+    $sql = "INSERT INTO categoria (Descricao)
+    VALUES ('$desc')";
 
     if (mysqli_query($con, $sql)) {
       echo "Ta cadastrado meu cria, beijocas!";

@@ -32,9 +32,10 @@ if (!isset($_SESSION['loggedin'])) {
   <!-- Sidebar -->
   <div class="sidemenu" style="display:none" id="sidebar">
     <button onclick="closemenu()" class="sidemenu-itens sidemenu-close">Close &times;</button>
-    <a href="#" class="sidemenu-itens">Fornecedores</a>
-    <a href="#" class="sidemenu-itens">Produtos</a>
+    <a href="fornecedor.php" target="iframe_1" class="sidemenu-itens">Fornecedores</a>
+    <a href="produto.php" target="iframe_1" class="sidemenu-itens">Produtos</a>
     <a href="#" class="sidemenu-itens">Requisições</a>
+    <a href="categoria.php" target="iframe_1" class="sidemenu-itens"> Categoria </a>
     <a href="users.php" target="iframe_1" class="sidemenu-itens">Usuários</a>
   </div>
 

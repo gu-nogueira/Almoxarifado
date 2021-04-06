@@ -6,6 +6,9 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: ../index.html');
 	exit;
 }
+
+include ('connectdb.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -19,17 +22,28 @@ if (!isset($_SESSION['loggedin'])) {
 	</head>
 	<body class="screen">
       <div class="container">
-				<h1>Cadastro de usuário</h1>
+				<h1>Cadastro de produto</h1>
         <br>
         <form action="" method="post">
-        <label for="user">Usuário</label>
-        <input type="text" id="user" name="user" placeholder="Usuário">
+        <label for="user">Descrição</label>
+        <input type="text" id="desc" name="desc" placeholder="Descrição">
         <br>
-        <label for="password">Senha</label>
-        <input type="password" id="password" name="password" placeholder="Senha">
+        <label for="password">Local Armazenado</label>
+        <input type="text" id="local" name="local" placeholder="Local Armazenado">
         <br>
-        <label for="contact">Contato</label>
-        <input type="text" id="contact" name="contact" placeholder="Contato">
+        <label for="contact">Quantidade em estoque</label>
+        <input type="text" id="qtd" name="qtd" placeholder="Estoque">
+        <br>
+        <label for="contact">Categoria</label>
+        <select name="cat"> 
+          <option value=""> </option>
+          <?php
+             $query = $con->query("SELECT Descricao FROM categoria");
+             while($reg = $query->fetch_array()) {
+                echo '<option value="'.$reg["Descricao"].'">'.$reg["Descricao"].'</option>';    
+             }
+          ?>
+        </select>
         <br>
         <input class="button" type="submit" name="submit" value="Cadastrar">
         </form>
@@ -39,14 +53,15 @@ if (!isset($_SESSION['loggedin'])) {
 
 <?php
   if (isset($_POST['submit'])) {
-    $user = $_POST['user'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $contact = $_POST['contact'];
+    $desc = $_POST['desc'];
+    $local = $_POST['local'];
+    $qtd = $_POST['qtd'];
+    $cat = $_POST['cat'];
 
     include('connectdb.php');
 
-    $sql = "INSERT INTO usuarios (Usuario, Senha, Contato)
-    VALUES ('$user', '$password', '$contact')";
+    $sql = "INSERT INTO produto (Descricao, Local_armaz, Qtde_estoque, Categoria_idCategoria)
+    VALUES ('$desc', '$local', '$qtd', '$cat_final')";
 
     if (mysqli_query($con, $sql)) {
       echo "Ta cadastrado meu cria, beijocas!";
