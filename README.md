@@ -28,3 +28,7 @@ Projeto para o 5º Ciclo de ADS
 * alterado sistema de navegação e adaptado css para iframe; (frontend)
 * criado tela de cadastro de usuário; (frontend)
 * criada lógica para inserção dos dados no banco; (frontend)
+* feito o cadastro de fornecedores, produtos, categorias
+* mudança no BD dos fornecedores
+* linkagem dos campos de categoria na aba de cadastro de produtos
+* estilização das telas de cadastro
