@@ -37,6 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
     <a href="#" class="sidemenu-itens">Requisições</a>
     <a href="categoria.php" target="iframe_1" class="sidemenu-itens"> Categoria </a>
     <a href="users.php" target="iframe_1" class="sidemenu-itens">Usuários</a>
+    <a href="relatorio.php" target="iframe_1" class="sidemenu-itens">Relatórios</a>
   </div>
 
 		<div class="content">
