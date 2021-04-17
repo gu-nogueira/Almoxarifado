@@ -60,8 +60,12 @@ include ('connectdb.php');
 
     include('connectdb.php');
 
+    $lucao  = mysqli_query($con, "SELECT idCategoria FROM Categoria WHERE Descricao = '$cat'");
+    $cat_final = $lucao->fetch_row();
+
     $sql = "INSERT INTO produto (Descricao, Local_armaz, Qtde_estoque, Categoria_idCategoria)
-    VALUES ('$desc', '$local', '$qtd', '$cat_final')";
+    VALUES ('$desc', '$local', '$qtd', '$cat_final[0]')";
+
 
     if (mysqli_query($con, $sql)) {
       echo "Ta cadastrado meu cria, beijocas!";
