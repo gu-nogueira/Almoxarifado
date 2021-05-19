@@ -6,9 +6,7 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: ../index.html');
 	exit;
 }
-
-include ('connectdb.php');
-
+include('connectdb.php');
 ?>
 
 <!DOCTYPE html>
@@ -25,22 +23,22 @@ include ('connectdb.php');
 				<h1>Cadastro de produto</h1>
         <br>
         <form action="" method="post">
-        <label for="user">Descrição</label>
+        <label for="desc">Descrição</label>
         <input type="text" id="desc" name="desc" placeholder="Descrição">
         <br>
-        <label for="password">Local Armazenado</label>
+        <label for="local">Local Armazenado</label>
         <input type="text" id="local" name="local" placeholder="Local Armazenado">
         <br>
-        <label for="contact">Quantidade em estoque</label>
+        <label for="qtd">Quantidade em estoque</label>
         <input type="text" id="qtd" name="qtd" placeholder="Estoque">
         <br>
-        <label for="contact">Categoria</label>
+        <label for="cat">Categoria</label>
         <select name="cat"> 
           <option value=""> </option>
-          <?php
+          <?php          
              $query = $con->query("SELECT Descricao FROM categoria");
              while($reg = $query->fetch_array()) {
-                echo '<option value="'.$reg["Descricao"].'">'.$reg["Descricao"].'</option>';    
+                echo '<option value="'.$reg["Descricao"].'">'.utf8_encode($reg["Descricao"]).'</option>';    
              }
           ?>
         </select>
@@ -58,7 +56,7 @@ include ('connectdb.php');
     $qtd = $_POST['qtd'];
     $cat = $_POST['cat'];
 
-    include('connectdb.php');
+    
 
     $lucao  = mysqli_query($con, "SELECT idCategoria FROM Categoria WHERE Descricao = '$cat'");
     $cat_final = $lucao->fetch_row();
@@ -68,9 +66,9 @@ include ('connectdb.php');
 
 
     if (mysqli_query($con, $sql)) {
-      echo "Ta cadastrado meu cria, beijocas!";
+      echo "Produto cadastrado com sucesso!";
     } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($con);
+      echo "Erro ao cadastrar produto: " . $sql . "<br>" . mysqli_error($con);
     }
 
     mysqli_close($con);

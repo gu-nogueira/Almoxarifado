@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Abr-2021 às 01:30
--- Versão do servidor: 10.4.11-MariaDB
--- versão do PHP: 7.4.1
+-- Tempo de geração: 18-Maio-2021 às 14:06
+-- Versão do servidor: 10.4.18-MariaDB
+-- versão do PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -139,6 +138,16 @@ CREATE TABLE `requisitante` (
   `Setor` varchar(30) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `requisitante`
+--
+
+INSERT INTO `requisitante` (`idRequisitante`, `Nome`, `Setor`) VALUES
+(1, 'Gustavo', 'TI'),
+(2, 'Guilherme', 'Compras'),
+(3, 'Caio', 'Contabilidade'),
+(4, 'Túlio', 'Dpto. Pessoal');
+
 -- --------------------------------------------------------
 
 --
@@ -268,7 +277,7 @@ ALTER TABLE `requisita`
 -- AUTO_INCREMENT de tabela `requisitante`
 --
 ALTER TABLE `requisitante`
-  MODIFY `idRequisitante` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRequisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `requisição`

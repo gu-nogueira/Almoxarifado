@@ -19,11 +19,14 @@ if (!isset($_SESSION['loggedin'])) {
 	</head>
 	<body class="screen">
       <div class="container">
-				<h1>Cadastro de Categoria</h1>
+				<h1>Cadastro de requisitante</h1>
         <br>
         <form action="" method="post">
-        <label for="user">Descrição</label>
-        <input type="text" id="desc" name="desc" placeholder="Descrição">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Nome">
+        <br>
+        <label for="setor">Setor</label>
+        <input type="text" id="setor" name="setor" placeholder="Setor">
         <br>
         <input class="button" type="submit" name="submit" value="Cadastrar">
         </form>
@@ -33,17 +36,17 @@ if (!isset($_SESSION['loggedin'])) {
 
 <?php
   if (isset($_POST['submit'])) {
-    $desc = $_POST['desc'];
+    $nome = $_POST['nome'];
+    $setor = $_POST['setor'];
 
     include('connectdb.php');
 
-    $sql = "INSERT INTO categoria (Descricao)
-    VALUES ('$desc')";
+    $sql = "INSERT INTO requisitante  (Nome, Setor) VALUES ('$nome', '$setor')";
 
     if (mysqli_query($con, $sql)) {
-      echo "Categoria cadastrada com sucesso!";
+      echo "Requisitante cadastrado com sucesso!";
     } else {
-      echo "Erro ao cadastrar categoria: " . $sql . "<br>" . mysqli_error($con);
+      echo "Erro ao cadastrar requisitante: " . $sql . "<br>" . mysqli_error($con);
     }
 
     mysqli_close($con);

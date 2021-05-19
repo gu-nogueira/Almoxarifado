@@ -20,6 +20,8 @@ if (!isset($_SESSION['loggedin'])) {
 	<body class="screen">
 				<p> Seja bem vindo, <?=$_SESSION['name']?>! </p>
         <br>
-        ablublublé
+        Total de produtos cadastrados:
+				<br>
+				Total de novas requisições hoje: 
 	</body>
 </html>

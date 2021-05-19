@@ -24,7 +24,7 @@ if (!isset($_SESSION['loggedin'])) {
     <button class="sidemenu-button" onclick="openmenu()">☰</button>
 			<div>
         <div><a href="home.php"><h1>Controle de Almoxarifado</h1></a></div>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+				<a href="profile.php"><i class="fas fa-user-circle"></i>Perfil</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
@@ -34,7 +34,8 @@ if (!isset($_SESSION['loggedin'])) {
     <button onclick="closemenu()" class="sidemenu-itens sidemenu-close">Close &times;</button>
     <a href="fornecedor.php" target="iframe_1" class="sidemenu-itens">Fornecedores</a>
     <a href="produto.php" target="iframe_1" class="sidemenu-itens">Produtos</a>
-    <a href="#" class="sidemenu-itens">Requisições</a>
+    <a href="requisicao.php" target="iframe_1" class="sidemenu-itens">Requisições</a>
+    <a href="requisitante.php" target="iframe_1" class="sidemenu-itens"> Requisitante </a>
     <a href="categoria.php" target="iframe_1" class="sidemenu-itens"> Categoria </a>
     <a href="users.php" target="iframe_1" class="sidemenu-itens">Usuários</a>
     <a href="relatorio.php" target="iframe_1" class="sidemenu-itens">Relatórios</a>

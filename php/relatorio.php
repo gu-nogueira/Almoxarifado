@@ -26,12 +26,12 @@ if (!isset($_SESSION['loggedin'])) {
 
       <table>      
         <tr> 
-          <td> <input type="submit" name="fornecedor" value="Fornecedores"></td>
-          <td> <input type="submit" name="produto" value="Produtos"></td>
+          <td> <button name="fornecedor"> Fornecedores </button> </td>
+          <td> <button name="produto" value="Produtos"> Produtos </button> </td>
         </tr>
         <tr>  
-          <td> <input type="submit" name="categoria" value="Categorias"> </td>
-          <td> <input type="submit" name="requisicao" value="Requisições"> </td>
+          <td> <button name="categoria"> Categorias </button> </td>
+          <td> <button name="requisicao"> Requisições </button> </td>
         </tr>
       </table>  
 

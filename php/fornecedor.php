@@ -16,6 +16,8 @@ if (!isset($_SESSION['loggedin'])) {
 		<link href="../css/reset.css" rel="stylesheet" type="text/css">
 		<link href="../css/style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.mask.min.js" type="text/javascript"></script>
 	</head>
 	<body class="screen">
       <div class="container">
@@ -35,20 +37,18 @@ if (!isset($_SESSION['loggedin'])) {
           <input type="text" id="contact" name="contact" placeholder="Contato">
           <br>
           <label for="contact">CNPJ</label>
-          <input type="text" id="cnpj" name="cnpj" placeholder="CNPJ">
+          <input type="text" id="cnpj" name="cnpj">
           <br>
           <input class="button" type="submit" name="submit" value="Cadastrar">
         </form>
       </div>
 
-	</body>
+	</body> 
 
-      <script src="../js/jquery.mask.min.js" type="text/javascript"> </script>
-      <script src="../js/jquery-min.js" type="text/javascript"> </script>
       <script type="text/javascript">
           
-        $(document).ready(function(){
-           $('#cnpj').mask("00.000.000/0000-00", { placeholder: '00.000.000/0000-00' });
+        $(document).ready(function () {
+          $('#cnpj').mask("00.000.000/0000-00", { placeholder: '00.000.000/0000-00' });
         });
 
       </script>
@@ -64,33 +64,15 @@ if (!isset($_SESSION['loggedin'])) {
     $contact = $_POST['contact'];
     $cnpj = $_POST['cnpj'];
 
-    /* //Função máscara de CPF e CNPJ
-    function mask($val, $mask){
-    $maskared = '';
-    $k = 0;
-
-    for($i = 0; $i<=strlen($mark)-1; $i++){
-      if($mask[$i] == '#'){
-        if(isset($val[$k])) $maskared .= $val[$k++];
-      } else {
-        if(isset($mask[$i])) $maskared .= $mask[$i];
-      }
-    }
-    return $maskared;
-  }
-
-  $cpf = mask($details["cpf"], '###.###.###-##');
-  $cnpj = mask($details["cnpj"], '##.###.###/####-##'); */
-
     include('connectdb.php');
 
     $sql = "INSERT INTO fornecedor (Nome_fantasia, Endereco, Cidade, Contato, CNPJ)
     VALUES ('$nome', '$end', '$cidade', '$contact', '$cnpj')";
 
     if (mysqli_query($con, $sql)) {
-      echo "Ta cadastrado meu cria, beijocas!";
+      echo "Fornecedor cadastrado com sucesso!";
     } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($con);
+      echo "Erro ao realizar cadastro: " . $sql . "<br>" . mysqli_error($con);
     }
 
     mysqli_close($con);
