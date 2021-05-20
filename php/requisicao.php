@@ -47,9 +47,9 @@ include ('connectdb.php');
           <select name="produtos[]" class="selecao_requisicao products">
             <option value=""> </option>
             <?php
-              $sql = $con->query("SELECT Descricao FROM produto");
+              $sql = $con->query("SELECT idProduto, Descricao FROM produto");
               while($valor = $sql->fetch_array()){
-                echo '<option value="'.$valor["Descricao"].'">'.utf8_encode($valor["Descricao"]).'</option>';
+                echo '<option value="'.$valor["idProduto"].'">'.utf8_encode($valor["Descricao"]).'</option>';
               }
             ?>
           </select>
@@ -75,7 +75,7 @@ include ('connectdb.php');
         e.preventDefault();
         if (x < max_fields) {
             x++;
-            $(wrapper).append('<div><select name="produtos[]" class="selecao_requisicao products"> <option value=""> </option> <?php $sql = $con->query("SELECT Descricao FROM produto"); while($valor = $sql->fetch_array()){ echo '<option value="'.$valor["Descricao"].'">'.utf8_encode($valor["Descricao"]).'</option>'; } ?> </select> <input type="text" name="qtd[]" id="qtd" placeholder="Qtd" class="selecao_requisicao quantity" required="required"> <a href="#" class="delete">&#10005</a><br></div>'); //add input box
+            $(wrapper).append('<div><select name="produtos[]" class="selecao_requisicao products"> <option value=""> </option> <?php $sql = $con->query("SELECT idProduto, Descricao FROM produto"); while($valor = $sql->fetch_array()){ echo '<option value="'.$valor["idProduto"].'">'.utf8_encode($valor["Descricao"]).'</option>'; } ?> </select> <input type="text" name="qtd[]" id="qtd" placeholder="Qtd" class="selecao_requisicao quantity" required="required"> <a href="#" class="delete">&#10005</a><br></div>'); //add input box
         } else {
             alert('Somente é possível inserir 10 produtos em cada requisição.')
         }
@@ -87,7 +87,7 @@ include ('connectdb.php');
         x--;
         })
     });
-    
+
   </script>
 
 </html>
@@ -100,26 +100,25 @@ include ('connectdb.php');
     $id_requisitante = $lucao->fetch_row();
 
     $data = $_POST['data'];
+    $produtos = $_POST['produtos'];
+    $qtd = $_POST['qtd'];
 
     $sql = "INSERT INTO requisicao (Data_retirada, Requisitante_idRequisitante)
     VALUES ('$data', '$id_requisitante[0]')";
 
     if (mysqli_query($con, $sql)) {
-      $produtos = $_POST['produtos'];
-      $qtd = $_POST['qtd'];
 
+      $id_requisicao = mysqli_insert_id($con);
+      $quant = count($produtos);
 
+      for($i=0;$i<$quant;$i++){
+        mysqli_query($con, "INSERT INTO requisita (Produto_idProduto, Qtde_requisita,	Requisicao_idRequisicao)
+        VALUES ('$produtos[$i]', '$qtd[$i]', '$id_requisicao')");
+      }
     } else {
       echo "Erro ao cadastrar requisição: " . $sql . "<br>" . mysqli_error($con);
     }
-
-
     
-
-    
- 
-
-
     mysqli_close($con);
   }
 ?>
