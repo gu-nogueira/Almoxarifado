@@ -38,13 +38,21 @@ if (!isset($_SESSION['loggedin'])) {
     <a href="requisitante.php" target="iframe_1" class="sidemenu-itens"> Requisitante </a>
     <a href="categoria.php" target="iframe_1" class="sidemenu-itens"> Categoria </a>
     <a href="users.php" target="iframe_1" class="sidemenu-itens">Usuários</a>
-    <a href="relatorio.php" target="iframe_1" class="sidemenu-itens">Relatórios</a>
+    <button class="dropdown-btn">Relatórios
+			<i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-container">
+			<a href="relatorios/rel_fornecedor.php" target="iframe_1" class="sidemenu-itens">Fornecedores</a>
+			<a href="relatorios/rel_produto.php" target="iframe_1" class="sidemenu-itens">Produtos</a>
+			<a href="#" target="iframe_1" class="sidemenu-itens">Categorias</a>
+			<a href="#" target="iframe_1" class="sidemenu-itens">Requisições</a>
+		</div>
   </div>
 
 		<div class="content">
 			<h2>Início</h2>
 			<div class="card">
-				<iframe src="welcome.php" name="iframe_1" width="940px" height="500px" frameborder="0px">  </iframe>	
+				<iframe src="welcome.php" name="iframe_1" width="1200px" height="500px" frameborder="0px">  </iframe>	
 			</div>
 		</div>
 
@@ -57,6 +65,24 @@ if (!isset($_SESSION['loggedin'])) {
     function closemenu() {
       document.getElementById("sidebar").style.display = "none";
     }
+
+		// Dropdown
+
+		var dropdown = document.getElementsByClassName("dropdown-btn");
+		var i;
+
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "flex") {
+					dropdownContent.style.display = "none";
+				} else {
+					dropdownContent.style.display = "flex";
+					
+				}
+			});
+		}
 
     </script>
 

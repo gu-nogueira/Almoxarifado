@@ -125,8 +125,9 @@ background-color: #2868c7;
   background-color: rgb(0,0,0,0);
   border: none;
   color: #eaebed;
-  padding: 15px;
+  padding: 16px;
   font-size: 1.35em;
+  transition: 200ms;
 }
 
 .sidemenu-button:hover {
@@ -154,9 +155,10 @@ background-color: #2868c7;
   background-color: #EFEFEF;
 }
 
-.sidemenu a {
+.sidemenu-itens a {
   color: #2f3947;
   text-decoration: none;
+  cursor: auto;
 }
 
 .sidemenu-itens a:link, a:visited {
@@ -171,6 +173,55 @@ background-color: #2868c7;
   cursor: auto;
 }
 
+.dropdown-btn {
+  color: #2f3947;
+  text-decoration: none;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  border: none;
+  white-space: normal;
+  outline: 0;
+}
+
+.dropdown-btn:hover {
+  transition: 400ms;
+  background-color: #EFEFEF;
+}
+
+.active {
+  background-color: #EFEFEF;
+}
+
+.dropdown-container {
+  display: none;
+  background-color: rgba(239, 239, 239, 0.342);
+  padding-left: 8px;
+  flex-direction: column;
+  animation:movedown 0.5s;
+}
+
+@keyframes movedown{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+.transition {
+  display: flex;
+  transition: 400ms;
+}
+
+.fa-caret-down {
+  float: right;
+  padding: 3px;
+  padding-right: 5px;
+}
+
 body.loggedin {
 	background-color: #f3f4f7;
 }
@@ -180,7 +231,7 @@ body.screen {
   padding: 5px;
 }
 .content {
-	width: 1000px;
+	width: 1260px;
 	margin: 0 auto;
 }
 .content h2 {
@@ -274,25 +325,6 @@ body.screen {
   float: center;
 }
 
-.box button {
-  background-color: #4CAF50;
-  border: 3px black;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  border-radius: 5px;
-  display: inline-block;
-  font-size: 16px;
-  margin: 15px 3px;
-  cursor: pointer;
-  transition-duration: 0.5s;
-  width: 220px;
-  height: 70px;
-}
-
-.box button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
 
 .box table{
   width: 870px;
@@ -333,8 +365,8 @@ body.screen {
   color: white;
 }
 
-.delete{
-  background-color: #fd1100e5;
+.delete {
+  background-color: crimson;
   border: none;
   color: white;
   padding: 10px 13px;
@@ -344,4 +376,47 @@ body.screen {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+.data-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-row {
+  display: flex;  
+  align-items: center;
+}
+
+.data-item {
+  flex: 1;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+
+.data-header {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+.data-edit {
+  background-color: #4CAF50;
+  padding: 8px 10px 7px 10px;
+  border-radius: 5px;
+  margin: 3px;
+  
+}
+
+.data-delete {
+  background-color: crimson;
+  padding: 8px 10px 7px 10px;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+a.data-edit:link , a.data-edit:visited, a.data-delete:link , a.data-delete:visited {
+  color: white;
+  text-decoration: none;
+  cursor: auto;
+
 }
