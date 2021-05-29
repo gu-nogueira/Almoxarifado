@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Maio-2021 às 04:06
--- Versão do servidor: 5.7.17
--- PHP Version: 5.6.30
+-- Tempo de geração: 27-Maio-2021 às 17:00
+-- Versão do servidor: 10.4.18-MariaDB
+-- versão do PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `proj_almox`
+-- Banco de dados: `proj_almox`
 --
 
 -- --------------------------------------------------------
@@ -77,7 +76,8 @@ CREATE TABLE `fornecedor` (
 
 INSERT INTO `fornecedor` (`idFornecedor`, `Nome_fantasia`, `Endereco`, `Cidade`, `Contato`, `CNPJ`) VALUES
 (1, 'Aliexpress ', 'rua das ruas, 200', 'Sao Manuel', 'aliexpresssaomanuel@gmail.com', '46.455.289/0001-09'),
-(2, 'MONSTROS S.A', 'Rua do pÃ© vermeio, 198', 'Itatinga', 'contato@monstros.com.br', '43.233.212/0001-45');
+(2, 'Guzera Investimentos Ltda', 'Rua Atrás do Confiança, 360', 'Botucatu', 'guzerinhagameplays@gmail.com', '13.248.999/0001-87'),
+(3, 'Soluções Tecnologias', 'Rua Antonio Serafim, 580', 'Arapacuana - SP', 'solultda@solutec.com', '50.122.463/0001-24');
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE `produto` (
   `idProduto` int(11) NOT NULL,
   `Descricao` varchar(100) DEFAULT NULL,
   `Qtde_estoque` int(11) DEFAULT NULL,
-  `Local_armaz` text,
+  `Local_armaz` text DEFAULT NULL,
   `Categoria_idCategoria` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -111,30 +111,10 @@ INSERT INTO `produto` (`idProduto`, `Descricao`, `Qtde_estoque`, `Local_armaz`, 
 (11, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 0),
 (12, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 0),
 (13, 'Sabonate Liquido', 18, 'Quarto do Nambuco, prateleira 2', 0),
-(18, 'Detergente', 15, 'Quarto do nambuco, prateleira 3', 1),
+(14, '', 0, '', 0),
 (15, 'Motor a disel', 5, 'Deposito 1, quarto 2', 0),
 (16, 'Motor a disel', 5, 'Deposito 1, quarto 2', 0),
 (17, 'Borracha', 35, 'Estante 4, prateleira 3', 0);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `requisicao`
---
-
-CREATE TABLE `requisicao` (
-  `idRequisicao` int(11) NOT NULL,
-  `Data_retirada` varchar(45) DEFAULT NULL,
-  `Requisitante_idRequisitante` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `requisicao`
---
-
-INSERT INTO `requisicao` (`idRequisicao`, `Data_retirada`, `Requisitante_idRequisitante`) VALUES
-(21, '2021-05-20', 2),
-(20, '2021-05-19', 1);
 
 -- --------------------------------------------------------
 
@@ -145,21 +125,8 @@ INSERT INTO `requisicao` (`idRequisicao`, `Data_retirada`, `Requisitante_idRequi
 CREATE TABLE `requisita` (
   `idRequisita` int(11) NOT NULL,
   `Produto_idProduto` int(11) NOT NULL,
-  `Qtde_requisita` int(5) NOT NULL,
-  `Requisicao_idRequisicao` int(11) NOT NULL
+  `Requisição_idRequisição` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `requisita`
---
-
-INSERT INTO `requisita` (`idRequisita`, `Produto_idProduto`, `Qtde_requisita`, `Requisicao_idRequisicao`) VALUES
-(10, 7, 300, 21),
-(9, 11, 37, 20),
-(8, 7, 20, 20),
-(11, 10, 200, 21),
-(12, 17, 50, 21),
-(13, 13, 5, 21);
 
 -- --------------------------------------------------------
 
@@ -186,6 +153,18 @@ INSERT INTO `requisitante` (`idRequisitante`, `Nome`, `Setor`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `requisição`
+--
+
+CREATE TABLE `requisição` (
+  `idRequisição` int(11) NOT NULL,
+  `Data_retirada` varchar(45) DEFAULT NULL,
+  `Requisitante_idRequisitante` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuarios`
 --
 
@@ -205,17 +184,17 @@ INSERT INTO `usuarios` (`idUsuarios`, `Usuario`, `Senha`, `Contato`) VALUES
 (2, 'tulio', '$2y$10$ehGERC7JZR3atOZToclUoub27gJ/Iwpdkzo28nGUKp5S.A4Ros/T2', 'tulioageronutti@gmail.com');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `categoria`
+-- Índices para tabela `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idCategoria`);
 
 --
--- Indexes for table `fornece`
+-- Índices para tabela `fornece`
 --
 ALTER TABLE `fornece`
   ADD PRIMARY KEY (`idFornece`),
@@ -223,89 +202,97 @@ ALTER TABLE `fornece`
   ADD KEY `fk_Fornece_Fornecedor1_idx` (`Fornecedor_idFornecedor`);
 
 --
--- Indexes for table `fornecedor`
+-- Índices para tabela `fornecedor`
 --
 ALTER TABLE `fornecedor`
   ADD PRIMARY KEY (`idFornecedor`);
 
 --
--- Indexes for table `produto`
+-- Índices para tabela `produto`
 --
 ALTER TABLE `produto`
   ADD PRIMARY KEY (`idProduto`),
   ADD KEY `fk_Produto_Categoria1_idx` (`Categoria_idCategoria`);
 
 --
--- Indexes for table `requisicao`
---
-ALTER TABLE `requisicao`
-  ADD PRIMARY KEY (`idRequisicao`),
-  ADD KEY `fk_Requisição_Requisitante1_idx` (`Requisitante_idRequisitante`);
-
---
--- Indexes for table `requisita`
+-- Índices para tabela `requisita`
 --
 ALTER TABLE `requisita`
   ADD PRIMARY KEY (`idRequisita`),
   ADD KEY `fk_Requisita_Produto1_idx` (`Produto_idProduto`),
-  ADD KEY `fk_Requisita_Requisição1_idx` (`Requisicao_idRequisicao`);
+  ADD KEY `fk_Requisita_Requisição1_idx` (`Requisição_idRequisição`);
 
 --
--- Indexes for table `requisitante`
+-- Índices para tabela `requisitante`
 --
 ALTER TABLE `requisitante`
   ADD PRIMARY KEY (`idRequisitante`);
 
 --
--- Indexes for table `usuarios`
+-- Índices para tabela `requisição`
+--
+ALTER TABLE `requisição`
+  ADD PRIMARY KEY (`idRequisição`),
+  ADD KEY `fk_Requisição_Requisitante1_idx` (`Requisitante_idRequisitante`);
+
+--
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`idUsuarios`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `categoria`
+-- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `fornece`
+-- AUTO_INCREMENT de tabela `fornece`
 --
 ALTER TABLE `fornece`
   MODIFY `idFornece` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `fornecedor`
+-- AUTO_INCREMENT de tabela `fornecedor`
 --
 ALTER TABLE `fornecedor`
-  MODIFY `idFornecedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idFornecedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `produto`
+-- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `idProduto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idProduto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
--- AUTO_INCREMENT for table `requisicao`
---
-ALTER TABLE `requisicao`
-  MODIFY `idRequisicao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT for table `requisita`
+-- AUTO_INCREMENT de tabela `requisita`
 --
 ALTER TABLE `requisita`
-  MODIFY `idRequisita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idRequisita` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `requisitante`
+-- AUTO_INCREMENT de tabela `requisitante`
 --
 ALTER TABLE `requisitante`
   MODIFY `idRequisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de tabela `requisição`
+--
+ALTER TABLE `requisição`
+  MODIFY `idRequisição` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

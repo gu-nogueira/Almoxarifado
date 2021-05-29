@@ -231,7 +231,7 @@ body.screen {
   padding: 5px;
 }
 .content {
-	width: 1260px;
+	width: 1200px;
 	margin: 0 auto;
 }
 .content h2 {
@@ -312,7 +312,7 @@ body.screen {
   border-radius: 4px;
   cursor: pointer;
   position: absolute;
-  right: 80px;
+  right: 93px;
 }
 
 .box {
@@ -383,40 +383,132 @@ body.screen {
   flex-direction: column;
 }
 
+.data-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+
 .data-row {
-  display: flex;  
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
 }
 
 .data-item {
   flex: 1;
   margin-bottom: 5px;
-  flex-wrap: wrap;
 }
 
 .data-header {
   flex: 1;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .data-edit {
   background-color: #4CAF50;
+  color: #fff;
   padding: 8px 10px 7px 10px;
   border-radius: 5px;
   margin: 3px;
-  
+  cursor: pointer;
+  border: none;
 }
 
 .data-delete {
   background-color: crimson;
+  color: #fff;
   padding: 8px 10px 7px 10px;
   border-radius: 5px;
   margin: 3px;
+  cursor: pointer;
+  border: none;
+}
+
+.data-print {
+  display: flex;
+  background-color: #DAA520;
+  padding: 8px 10px 7px 10px;
+  border-radius: 5px;
+  margin: 3px;
+  color: #fff;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 a.data-edit:link , a.data-edit:visited, a.data-delete:link , a.data-delete:visited {
   color: white;
   text-decoration: none;
   cursor: auto;
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pages a {
+  background-color: #4CAF50;
+  padding: 4px 8px 6px 10px;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 10px;
+}
+
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2000; /* Isso irá garantir que este elemento sempre fique por cima de todos os outros elementos do site */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #FFF;
+  width: 40%;
+  min-width: 300px;
+  padding: 20px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
+  position: relative;
+  border-radius: 5px;;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -60px, 0); /* Com transform se muda a posição do elemento */
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); 
+  }
+}
+
+.modal-show .modal {
+  animation: modal .3s;
+}
+
+.modal-close {
+  position: absolute; /* O item fica absoluto em relação à classe .modal, que está como position relative (relativo) */
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 40px;
+  border: none;
+  font-size: 2em;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.modal-container.modal-show { /* Quando há duas classes grudadas, significa que devem haver as duas classes no elemento para que a estilização funcione */
+  display: flex;
 
 }

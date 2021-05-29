@@ -31,7 +31,7 @@ if (!isset($_SESSION['loggedin'])) {
 
   <!-- Sidebar -->
   <div class="sidemenu" style="display:none" id="sidebar">
-    <button onclick="closemenu()" class="sidemenu-itens sidemenu-close">Close &times;</button>
+    <button onclick="closemenu()" class="sidemenu-itens sidemenu-close">Fechar &times;</button>
     <a href="fornecedor.php" target="iframe_1" class="sidemenu-itens">Fornecedores</a>
     <a href="produto.php" target="iframe_1" class="sidemenu-itens">Produtos</a>
     <a href="requisicao.php" target="iframe_1" class="sidemenu-itens">Requisições</a>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<div class="content">
 			<h2>Início</h2>
 			<div class="card">
-				<iframe src="welcome.php" name="iframe_1" width="1200px" height="500px" frameborder="0px">  </iframe>	
+				<iframe src="welcome.php" name="iframe_1" width="1150px" height="500px" frameborder="0px">  </iframe>	
 			</div>
 		</div>
 
