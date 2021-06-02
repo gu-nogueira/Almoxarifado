@@ -4,7 +4,7 @@ Projeto para o 5º Ciclo de ADS
 ## Como instalar
 
 * Gere o código SSH na sua máquina com ```ssh-keygen```
-* Copie o código do sshkeygen para as suas configurações de conta no Github
+* Copie o código em ```C:\Users\<usuario>\.ssh\id_rsa.pub``` do sshkeygen para as suas configurações de conta no Github
 * Instale o Git
 * Escolha uma pasta para replicar o seu projeto
 * Vá na pasta e abra o PowerShell do Windows ou GitShell
@@ -19,16 +19,18 @@ Projeto para o 5º Ciclo de ADS
 * Digite ```git commit -m "Mensagem"``` para criar o commit das alterações
 * Digite ```git push origin master``` para dar push nas suas alterações 
 
-## Alterações
+## Afazeres
 
-* lógica de sessão de usuário; (backend)
-* tela inicial; (frontend)
-* tela de perfil do usuário; (frontend)
-* menu lateral; (frontend)
-* alterado sistema de navegação e adaptado css para iframe; (frontend)
-* criado tela de cadastro de usuário; (frontend)
-* criada lógica para inserção dos dados no banco; (frontend)
-* feito o cadastro de fornecedores, produtos, categorias
-* mudança no BD dos fornecedores
-* linkagem dos campos de categoria na aba de cadastro de produtos
-* estilização das telas de cadastro
+* [x] Cadastro de fornecedores;
+* [x] Cadastro de produtos;
+* [x] Cadastro de categorias;
+* [x] Cadastro de requisições;
+* [x] Consulta de fornecedores;
+* [x] Delete e update de fornecedores;
+* [x] Consulta de produtos;
+* [] Delete e update de produtos; ```php/relatorios/upd_produto.php```
+* [] Consulta de categorias;
+* [] Delete e update de categorias;
+* [] Consulta de requisições;
+* [] Delete e update de requisições;
+* [] Dar baixa nass requisições;
