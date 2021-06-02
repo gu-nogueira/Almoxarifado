@@ -28,9 +28,9 @@ Projeto para o 5º Ciclo de ADS
 * [x] Consulta de fornecedores;
 * [x] Delete e update de fornecedores;
 * [x] Consulta de produtos;
-* [] Delete e update de produtos; ```php/relatorios/upd_produto.php```
-* [] Consulta de categorias;
-* [] Delete e update de categorias;
-* [] Consulta de requisições;
-* [] Delete e update de requisições;
-* [] Dar baixa nass requisições;
+* [ ] Delete e update de produtos; ```php/relatorios/upd_produto.php```
+* [ ] Consulta de categorias;
+* [ ] Delete e update de categorias;
+* [ ] Consulta de requisições;
+* [ ] Delete e update de requisições;
+* [ ] Dar baixa nass requisições;
