@@ -155,22 +155,19 @@ background-color: #2868c7;
   background-color: #EFEFEF;
 }
 
-.sidemenu-itens a {
+a.sidemenu-itens {
   color: #2f3947;
   text-decoration: none;
-  cursor: auto;
 }
 
-.sidemenu-itens a:link, a:visited {
+a:link, a:visited.sidemenu-itens {
   color: #2f3947;
   text-decoration: none;
-  cursor: auto;
 }
 
-.sidemenu-itens a:link:active, a:visited:active {
+a:link:active, a:visited:active.sidemenu-itens {
   color: #2f3947;
   text-decoration: none;
-  cursor: auto;
 }
 
 .dropdown-btn {
@@ -420,7 +417,6 @@ body.screen {
   padding: 8px 10px 7px 10px;
   border-radius: 5px;
   margin: 3px;
-  cursor: pointer;
   border: none;
 }
 
@@ -432,8 +428,8 @@ body.screen {
   margin: 3px;
   color: #fff;
   align-items: center;
-  cursor: pointer;
   font-weight: 500;
+  cursor: pointer;
 }
 
 a.data-edit:link , a.data-edit:visited, a.data-delete:link , a.data-delete:visited {
@@ -456,6 +452,7 @@ a.data-edit:link , a.data-edit:visited, a.data-delete:link , a.data-delete:visit
   font-weight: bold;
   font-size: 1.25rem;
   margin: 10px;
+  cursor: pointer;
 }
 
 .modal-container {

@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     include('connectdb.php');
 
-    $sql = "INSERT INTO categoria (Descricao)
+    $sql = "INSERT INTO categoria (Desricao_categoria)
     VALUES ('$desc')";
 
     if (mysqli_query($con, $sql)) {

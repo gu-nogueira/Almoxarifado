@@ -34,7 +34,7 @@ if (!isset($_SESSION['loggedin'])) {
       <?php
           include('../connectdb.php');
 
-          $limite = 5;
+          $limite = 4;
           if( isset( $_GET['pagina'] ) && (int)$_GET['pagina'] >= 0){
               $pagina = (int)$_GET['pagina'];
           }else{
