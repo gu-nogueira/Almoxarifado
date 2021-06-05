@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Maio-2021 às 03:29
+-- Generation Time: 05-Jun-2021 às 21:58
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -32,19 +32,20 @@ USE `proj_almox`;
 
 CREATE TABLE `categoria` (
   `idCategoria` int(11) NOT NULL,
-  `Descricao` varchar(40) DEFAULT NULL
+  `Descricao_categoria` varchar(40) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `categoria`
 --
 
-INSERT INTO `categoria` (`idCategoria`, `Descricao`) VALUES
+INSERT INTO `categoria` (`idCategoria`, `Descricao_categoria`) VALUES
 (1, 'Materiais de Limpeza'),
 (2, 'Material de escritório'),
 (3, 'Peças mecânicas'),
 (4, 'Pelucia'),
-(5, 'Produtos Alimentícios');
+(5, 'Produtos Alimentícios'),
+(7, 'Materiais de construção');
 
 -- --------------------------------------------------------
 
@@ -104,23 +105,20 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`idProduto`, `Descricao`, `Qtde_estoque`, `Local_armaz`, `Categoria_idCategoria`) VALUES
-(1, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 0),
-(2, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 0),
-(3, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 0),
-(4, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 0),
-(5, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 0),
-(6, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 0),
-(7, 'Caneta Azul', 25, 'Estante 4, prateleira 5', 0),
-(8, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 0),
-(9, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 0),
-(10, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 0),
-(11, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 0),
-(12, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 0),
-(13, 'Sabonate Liquido', 18, 'Quarto do Nambuco, prateleira 2', 0),
-(18, 'Detergente', 15, 'Quarto do nambuco, prateleira 3', 1),
-(15, 'Motor a disel', 5, 'Deposito 1, quarto 2', 0),
-(16, 'Motor a disel', 5, 'Deposito 1, quarto 2', 0),
-(17, 'Borracha', 35, 'Estante 4, prateleira 3', 0);
+(1, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
+(2, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
+(3, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
+(4, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
+(5, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
+(6, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
+(7, 'Caneta Azul', 25, 'Estante 4, prateleira 5', 2),
+(8, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 2),
+(9, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 2),
+(10, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 2),
+(11, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 2),
+(12, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 2),
+(13, 'Sabonate Liquido', 18, 'Quarto do Nambuco, prateleira 2', 1),
+(15, 'Motor a disel', 5, 'Deposito 1, quarto 2', 3);
 
 -- --------------------------------------------------------
 
@@ -276,7 +274,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `fornece`
 --
