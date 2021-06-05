@@ -50,7 +50,7 @@ mysqli_close($con);
 
 <body class="screen">
       <div class="container">
-				<h1>Atualização de <?=$data['Nome_fantasia']?></h1>
+				<h1>Atualização de fornecedor: <?=$data['Nome_fantasia']?></h1>
         <br>
         <form action="" method="post">
           <label for="user">Nome Fantasia</label> 

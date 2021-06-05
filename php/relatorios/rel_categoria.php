@@ -23,7 +23,7 @@ if (!isset($_SESSION['loggedin'])) {
 <body>
   <div class="box">
     <div class="data-box" style="margin: 0; align-items: center; justify-content: space-between;">
-      <h1 style=>Relatório de Produtos</h1>
+      <h1 style=>Relatório de Categorias</h1>
       <a class="data-print" onclick="window.print()">Imprimir <i class="fas fa-print" style="margin-left: 7px;"></i></a>
     </div>
     <section style="border-bottom: 1px solid #e0e0e3; padding-top: 20px;"></section>
@@ -34,18 +34,14 @@ if (!isset($_SESSION['loggedin'])) {
       <?php
           include('../connectdb.php');
 
-          $limite = 4;
+          $limite = 7;
           if( isset( $_GET['pagina'] ) && (int)$_GET['pagina'] >= 0){
               $pagina = (int)$_GET['pagina'];
           }else{
               $pagina = 0;
           }
           $offset = $limite * $pagina;
-          $postagem = $con->query("SELECT produto.idProduto, produto.Descricao, produto.Qtde_estoque, produto.Local_armaz, categoria.Descricao_categoria
-            FROM `produto`
-            INNER JOIN categoria ON produto.Categoria_idCategoria = categoria.idCategoria
-            ORDER BY idProduto DESC
-            LIMIT $limite OFFSET $offset;");   
+          $postagem = $con->query("SELECT * FROM `categoria` ORDER BY idCategoria DESC LIMIT $limite OFFSET $offset;");   
 
           $counter = 0;
           
@@ -54,21 +50,15 @@ if (!isset($_SESSION['loggedin'])) {
       <div class="data-box">
         <section class="data-row">
           <b class="data-header">Descrição</b>
-          <b class="data-header">Quantidade em estoque</b>
-          <b class="data-header">Local armazenado</b>
-          <b class="data-header">Categoria</b>
         </section>
 
         <section class="data-row" id="data">
-          <p class="data-item"><?= utf8_encode($info['Descricao']) ?></p>
-          <p class="data-item"><?= $info['Qtde_estoque'] ?></p>
-          <p class="data-item"><?= utf8_encode($info['Local_armaz']) ?></p>
           <p class="data-item"><?= utf8_encode($info['Descricao_categoria']) ?></p>
         </section>
       </div>
       <div class="data-box">
-        <a class="data-edit" href="upd_produto.php?id=<?=$info['idProduto']?>"><i class="fas fa-pencil-alt"></i></a>
-        <a class="data-delete" href="#" onclick="startModal('modal-delete'); prodId = <?=$info['idProduto']?>;"><i class="fas fa-trash"></i></a>
+        <a class="data-edit" href="upd_categoria.php?id=<?=$info['idCategoria']?>"><i class="fas fa-pencil-alt"></i></a>
+        <a class="data-delete" href="#" onclick="startModal('modal-delete'); catId = <?=$info['idCategoria']?>;"><i class="fas fa-trash"></i></a>
       </div>
 
       <section style="border-bottom: 1px solid #e0e0e3; margin-bottom: 20px;"></section>
@@ -117,18 +107,21 @@ if (!isset($_SESSION['loggedin'])) {
 
   // Código para envio do delete
 
-  let prodId;
+  let catId;
 
   $.fn.deleteAction = function() {
       $.ajax({
         type: 'POST',
-        url: 'del_produto.php',
-      data: {prod_id: prodId},
+        url: 'del_categoria.php',
+      data: {cat_id: catId},
         dataType: "json",
         success: function(response) {
           console.log(response);
-          if (response) {
+          if (response.status == 'ok') {
             location.reload();
+          } else {
+            window.alert('Ainda há produtos cadastrados com essa categoria!');
+            document.getElementById('modal-delete').classList.remove('modal-show');
           }
         }
       });
@@ -148,10 +141,10 @@ if (!isset($_SESSION['loggedin'])) {
   function startModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
-      modal.classList.add('modal-show') // Lista todas as classes CSS e adiciona a classe modal-show. 
-      modal.addEventListener('click', (e) => { // Passa como parâmetro 'e' o evento que foi clicado.
+      modal.classList.add('modal-show') 
+      modal.addEventListener('click', (e) => {
         if (e.target.id == modalId || e.target.className == 'modal-close') {
-          modal.classList.remove('modal-show'); // Lista as classes CSS e remove a classe modal-show
+          modal.classList.remove('modal-show');
         }
       });
     }

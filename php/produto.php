@@ -36,9 +36,9 @@ include('connectdb.php');
         <select name="cat"> 
           <option value=""> </option>
           <?php          
-             $query = $con->query("SELECT Descricao FROM categoria");
+             $query = $con->query("SELECT Descricao_categoria FROM categoria");
              while($reg = $query->fetch_array()) {
-                echo '<option value="'.$reg["Descricao"].'">'.utf8_encode($reg["Descricao"]).'</option>';    
+                echo '<option value="'.$reg["Descricao_categoria"].'">'.utf8_encode($reg["Descricao_categoria"]).'</option>';    
              }
           ?>
         </select>
@@ -58,7 +58,7 @@ include('connectdb.php');
 
     
 
-    $lucao  = mysqli_query($con, "SELECT idCategoria FROM Categoria WHERE Descricao = '$cat'");
+    $lucao  = mysqli_query($con, "SELECT idCategoria FROM Categoria WHERE Descricao_categoria = '$cat'");
     $cat_final = $lucao->fetch_row();
 
     $sql = "INSERT INTO produto (Descricao, Local_armaz, Qtde_estoque, Categoria_idCategoria)
