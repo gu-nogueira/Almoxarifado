@@ -45,7 +45,7 @@ if (!isset($_SESSION['loggedin'])) {
 			<a href="relatorios/rel_fornecedor.php" target="iframe_1" class="sidemenu-itens">Fornecedores</a>
 			<a href="relatorios/rel_produto.php" target="iframe_1" class="sidemenu-itens">Produtos</a>
 			<a href="relatorios/rel_categoria.php" target="iframe_1" class="sidemenu-itens">Categorias</a>
-			<a href="relatorios/rel_rerquisicao.php"" target="iframe_1" class="sidemenu-itens">Requisições</a>
+			<a href="relatorios/rel_requisicao.php"" target="iframe_1" class="sidemenu-itens">Requisições</a>
 		</div>
   </div>
 

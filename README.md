@@ -32,5 +32,5 @@ Projeto para o 5º Ciclo de ADS
 * [x] Consulta de categorias;
 * [x] Delete e update de categorias;
 * [ ] Consulta de requisições;
-* [ ] Delete e update de requisições;
+* [ ] Delete de requisições;
 * [ ] Dar baixa nass requisições;
