@@ -343,7 +343,7 @@ body.screen {
 }
 
 .quantity {
-  width: 150px !important; 
+  width: 140px !important; 
 }
 
 .increase {
@@ -373,6 +373,12 @@ body.screen {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+a.delete:link , a.delete:visited, a.delete:link , a.delete:visited {
+  color: white;
+  text-decoration: none;
+  cursor: auto;
 }
 
 .data-content {
