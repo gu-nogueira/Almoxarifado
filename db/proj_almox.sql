@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Jun-2021 às 21:58
+-- Generation Time: 11-Jun-2021 às 04:10
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -83,7 +83,6 @@ INSERT INTO `fornecedor` (`idFornecedor`, `Nome_fantasia`, `Endereco`, `Cidade`,
 (12, 'Guzango Enterprises', 'Rua Logo ali - 1234', 'Botucat - SP', 'contato@guzangoenterprises.com.br', '93.291.292/8282-12'),
 (13, 'Pardinho Pedras', 'Rua do PÃ© Vermeio - 144', 'Pardinho - SP', 'solucoes@pardinhopedras.com.br', '39.438.493/8493-43'),
 (14, 'Only Cartuchos', 'Av. Dom LÃºcio - 392', 'Botucatu - SP', 'contato@onlycartuchos.com.br', '39.458.394/5893-49'),
-(15, 'Teste 123', 'Rua Tal Tal - 354', 'Botucatu - SP', 'contato@teste123.com.br', '32.094.832/4093-42'),
 (16, 'Nambuco Containers', 'Rua Alguma Por aÃ­ - 132', 'Botucatu - SP', 'contato@nambuco.com.br', '12.312.312/3213-21');
 
 -- --------------------------------------------------------
@@ -105,17 +104,9 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`idProduto`, `Descricao`, `Qtde_estoque`, `Local_armaz`, `Categoria_idCategoria`) VALUES
-(1, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
-(2, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
-(3, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
-(4, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
 (5, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
-(6, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
 (7, 'Caneta Azul', 25, 'Estante 4, prateleira 5', 2),
-(8, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 2),
-(9, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 2),
 (10, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 2),
-(11, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 2),
 (12, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 2),
 (13, 'Sabonate Liquido', 18, 'Quarto do Nambuco, prateleira 2', 1),
 (15, 'Motor a disel', 5, 'Deposito 1, quarto 2', 3);
@@ -138,7 +129,10 @@ CREATE TABLE `requisicao` (
 
 INSERT INTO `requisicao` (`idRequisicao`, `Data_retirada`, `Requisitante_idRequisitante`) VALUES
 (21, '2021-05-20', 2),
-(20, '2021-05-19', 1);
+(20, '2021-05-19', 1),
+(22, '2021-06-08', 1),
+(23, '2021-06-09', 4),
+(24, '2021-06-23', 4);
 
 -- --------------------------------------------------------
 
@@ -163,7 +157,13 @@ INSERT INTO `requisita` (`idRequisita`, `Produto_idProduto`, `Qtde_requisita`, `
 (8, 7, 20, 20),
 (11, 10, 200, 21),
 (12, 17, 50, 21),
-(13, 13, 5, 21);
+(13, 13, 5, 21),
+(14, 6, 30, 22),
+(15, 2, 13, 23),
+(16, 11, 5, 23),
+(17, 5, 30, 24),
+(18, 8, 15, 24),
+(19, 12, 3, 24);
 
 -- --------------------------------------------------------
 
@@ -294,12 +294,12 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT for table `requisicao`
 --
 ALTER TABLE `requisicao`
-  MODIFY `idRequisicao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idRequisicao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `requisita`
 --
 ALTER TABLE `requisita`
-  MODIFY `idRequisita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idRequisita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `requisitante`
 --
