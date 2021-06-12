@@ -25,28 +25,27 @@ include ('connectdb.php');
         <br>
         <p style="color: red;">Atenção! após cadastrada, a requisição dará baixa em estoque.</p>
         <br>
-
-        <label for="requisitante">Requisitante</label>
-        <select id="requisitante" name="requisitante"> 
-          <option value=""> </option>
-          <?php
-            $query = $con->query("SELECT idRequisitante, Nome FROM requisitante");
-             while($reg = $query->fetch_array()) {         
-                echo '<option value="'.$reg['idRequisitante'].'" id="teste">'.utf8_encode($reg['Nome']).'</option>';    
-            } 
-          ?>
-        </select>
-        <br>
-        <label for="data">Data Retirada</label>
-        <input type="date" id="data" name="data" placeholder="Data">
-        <br>
-          <label for="produtos">Produtos</label>
-          <label for="qtd" style="margin-left: 430px; width: 145px;">Estoque</label>
-          <label for="qtd">Quantidade</label>
+        <form id="requestForm">
+          <label for="requisitante">Requisitante</label>
+          <select id="requisitante" name="requisitante" required="true"> 
+            <option value=""> </option>
+            <?php
+              $query = $con->query("SELECT idRequisitante, Nome FROM requisitante");
+              while($reg = $query->fetch_array()) {         
+                  echo '<option value="'.$reg['idRequisitante'].'" id="teste">'.utf8_encode($reg['Nome']).'</option>';    
+              } 
+            ?>
+          </select>
           <br>
-           
+          <label for="data">Data Retirada</label>
+          <input type="date" id="data" name="data" required="true">
+          <br>
+          <label for="produtos">Produtos</label>
+          <label for="qtd_estoque" style="margin-left: 430px; width: 145px;">Estoque</label>
+          <label for="qtd">Quantidade</label>
+          <br>  
           <div class="container1">
-            <select name="produtos[]" id="produtos" class="selecao_requisicao products" onchange="getAmount(event)">
+            <select name="produtos[]" id="produtos" class="selecao_requisicao products" onchange="getAmount(event)" required="true">
               <option value=""> </option>
               <?php
                 $sql = $con->query("SELECT idProduto, Descricao, Qtde_estoque FROM produto");
@@ -55,27 +54,28 @@ include ('connectdb.php');
                 }
               ?>
             </select>
-            <input type="text" id="qtd_estoque" placeholder="Estoque" class="selecao_requisicao quantity" disabled>
-            <input type="text" id="qtd" placeholder="Quantidade" class="selecao_requisicao quantity" required="required">
+            <input type="text" id="qtd_estoque" placeholder="Estoque" class="selecao_requisicao quantity" style="padding: 12px;" disabled>
+            <input type="text" id="qtd" placeholder="Quantidade" class="selecao_requisicao quantity" required="true">
 
           </div>
 
           <button class="increase"><i class="fas fa-plus"></i></button>
-          <input class="button" type="submit" name="submit" onclick="getData();" value="Cadastrar">
-
+          <input class="button" type="submit" name="submit" value="Cadastrar">
+        </form>
       </div>
     <!-- MODAL DE EXCLUSÃO -->
     <div id="modal" class="modal-container">
-      <div class="modal">
+      <div class="modal" style="width: 60%;">
         <button class="modal-close">×</button>
-        <h1>Baixa de estoque</h1>
+        <h1>Confirmar baixa de estoque</h1>
         <div id="content">
         </div>
         <form action="" method="post">
-          <input style="margin-top: 30px;"type="button" value="Dar baixa em estoque" class="data-delete" name="delete-action" onclick="$.fn.deleteAction();">
+          <input style="margin-top: 30px;"type="button" value="Dar baixa em estoque" class="data-delete" id="delete-action" onclick="$.fn.deleteAction();">
         </form>
       </div>
     </div>
+
 	</body>
 
 <script type="text/javascript">
@@ -92,7 +92,7 @@ $(document).ready(function() {
       e.preventDefault();
       if (x < max_fields) {
           x++;
-          $(wrapper).append('<div><select name="produtos[]" id="produtos" class="selecao_requisicao products" onchange="getAmount(event)"> <option value=""> </option> <?php $sql = $con->query("SELECT idProduto, Descricao, Qtde_estoque FROM produto"); while($valor = $sql->fetch_array()){ echo '<option value="'.$valor["idProduto"].'" id="'.$valor["Qtde_estoque"].'">'.utf8_encode($valor["Descricao"]).'</option>'; } ?> </select><input type="number" id="qtd_estoque" placeholder="Estoque" class="selecao_requisicao quantity" style="margin-left: 5px !important;" disabled> <input type="text" id="qtd" placeholder="Quantidade" class="selecao_requisicao quantity" required="required"> <a href="#" class="delete">&#10005</a></div>'); //add input box
+          $(wrapper).append('<div><select name="produtos[]" id="produtos" class="selecao_requisicao products" onchange="getAmount(event)" required="true"> <option value=""> </option> <?php $sql = $con->query("SELECT idProduto, Descricao, Qtde_estoque FROM produto"); while($valor = $sql->fetch_array()){ echo '<option value="'.$valor["idProduto"].'" id="'.$valor["Qtde_estoque"].'">'.utf8_encode($valor["Descricao"]).'</option>'; } ?> </select><input type="number" id="qtd_estoque" placeholder="Estoque" class="selecao_requisicao quantity" style="margin-left: 5px !important;" disabled> <input type="text" id="qtd" placeholder="Quantidade" class="selecao_requisicao quantity" required="true"> <a href="#" class="delete">&#10005</a></div>'); //add input box
       } else {
           alert('Somente é possível inserir 10 produtos em cada requisição.')
       }
@@ -107,6 +107,14 @@ $(document).ready(function() {
     })
 });
 
+// Verifica se foi enviado o HTTP POST  
+
+$('#requestForm').submit(function(e){
+    e.preventDefault();
+
+    getData();
+});
+
 // Código para pegar os campos
 
 function getData() {
@@ -119,19 +127,27 @@ function getData() {
   let i = 0;
 
   requisicao.produtos = [];
+  requisicao.id_produtos = [];
   requisicao.qtd_produtos = [];
   for(i = produtos.length; i--; requisicao.produtos.unshift(produtos[i]));
   for(i = produtos.length; i--; requisicao.qtd_produtos.unshift(qtd[i])); 
 
   for(i=0;i<produtos.length;i++) {
+    requisicao.id_produtos.push(requisicao.produtos[i].selectedOptions[0].value);
     requisicao.produtos[i] = requisicao.produtos[i].selectedOptions[0].innerHTML;
     requisicao.qtd_produtos[i] = requisicao.qtd_produtos[i].value;
   }
 
-  startModal('modal');
+  if (hasDuplicates(requisicao.produtos)) {
+    window.alert("Atenção! Produtos duplicados!");
+  } else {
+    startModal('modal');
+  }
 }
 
+
 // Código para pegar estoque do produto
+
 requisicao.estoque = [];
 
 function getAmount(e) {
@@ -146,33 +162,53 @@ function getAmount(e) {
   }
 }
 
+// Função para verificar se há duplicatas no array
+
+function hasDuplicates(array) {
+    return (new Set(array)).size !== array.length;
+}
+
 // Código para funcionamento do modal
 
 function startModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) {
-    modal.classList.add('modal-show')
+    modal.classList.add('modal-show');
     let content = document.getElementById("content");
+    let deleteButton = document.getElementById("delete-action");
+    let verify = [];
     let result = `<br>Requisitante: ${requisicao.requisitante}<br>`
     result += `Data da requisição: ${requisicao.data_retirada}<br>`
-
+    result += `<table style="width: 100%;"><tr style="border-top: 5px red"><td><b>Produto:</b></td><td><b>Estoque:</b></td><td><b>Quantia requisitada:</b></td></td><td><b>Estoque atualizado:</b></td></tr>`;
     for (i = 0 ; i < requisicao.produtos.length ; i++) {
-      result += `Produtos: ${requisicao.produtos[i]}<br>`
-      result += `Estoque: ${requisicao.estoque[i]}<br>`
-      result += `Quantidade requisitada: ${requisicao.qtd_produtos[i]}<br>`
+      result += `<tr><td>${requisicao.produtos[i]}</td><td>${requisicao.estoque[i]}</td><td>${requisicao.qtd_produtos[i]}</td>`;
       if (requisicao.estoque[i] > requisicao.qtd_produtos[i]) {
-        result += `<text style="border: 'none'; color: green">Estoque atualizado: </text>${requisicao.estoque[i] - requisicao.qtd_produtos[i]}<br>`
+        result += `<td style="color: green;">${requisicao.estoque[i] - requisicao.qtd_produtos[i]}</td></tr>`;
+        verify.push(true);
       } else {
-        result += `<text style="border: 'none'; color: red"> Quantida em estoque insuficiente: </text> ${requisicao.estoque[i] - requisicao.qtd_produtos[i]}<br>`
+        result += `<td style="color: red";> ${requisicao.estoque[i] - requisicao.qtd_produtos[i]}</d></tr>`
+        verify.push(false);
       }
+    }
+
+    result += `</table>`
+
+    if (verify.includes(false)) {
+      result += `<br><text style="color: red";> <b>Atenção:</b> Não há produtos em estoque o suficiente! </text>`;
+      deleteButton.disabled = true;
+      deleteButton.style.backgroundColor = "grey";
+    } else {
+      deleteButton.disabled = false;
+      deleteButton.style.backgroundColor = "crimson";
     }
 
     content.innerHTML += result;
 
-
     modal.addEventListener('click', (e) => {
       if (e.target.id == modalId || e.target.className == 'modal-close') {
         modal.classList.remove('modal-show');
+
+        content.innerHTML = '';
       }
     });
   }
@@ -182,16 +218,22 @@ function startModal(modalId) {
 // ajax
 
 $.fn.deleteAction = function() {
+  // Laço para dar baixa no estoque
+  for (let i = 0 ; i < requisicao.produtos.length ; i++) {
+    requisicao.estoque[i] = requisicao.estoque[i] - requisicao.qtd_produtos[i];
+  }
+  console.log(requisicao);
   $.ajax({
     type: 'POST',
     url: 'upd_estoque.php',
     data: {
-      req_id: reqId
+      requisicao: requisicao
     },
     dataType: "json",
     success: function(response) {
       console.log(response);
       if (response) {
+        window.alert("Requisição cadastrada com sucesso!");
         location.reload();
       }
     }
@@ -201,32 +243,3 @@ $.fn.deleteAction = function() {
 </script>
 
 </html>
-
-<!-- php para inserir os dados no banco -->
-
-<?php
-  // if (isset($_POST['submit'])) {
-  //   $requisitante = $_POST['requisitante'];
-  //   $data = $_POST['data'];
-  //   $produtos = $_POST['produtos'];
-  //   $qtd = $_POST['qtd'];
-
-  //   $sql = "INSERT INTO requisicao (Data_retirada, Requisitante_idRequisitante)
-  //   VALUES ('$data', '$requisitante')";
-
-  //   if (mysqli_query($con, $sql)) {
-
-  //     $id_requisicao = mysqli_insert_id($con);
-  //     $quant = count($produtos);
-
-  //     for($i=0;$i<$quant;$i++){
-  //       mysqli_query($con, "INSERT INTO requisita (Produto_idProduto, Qtde_requisita,	Requisicao_idRequisicao)
-  //       VALUES ('$produtos[$i]', '$qtd[$i]', '$id_requisicao')");
-  //     }
-  //   } else {
-  //     echo "Erro ao cadastrar requisição: " . $sql . "<br>" . mysqli_error($con);
-  //   }
-    
-  //   mysqli_close($con);
-  // }
-?>
