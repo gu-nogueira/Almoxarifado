@@ -162,7 +162,7 @@ function getAmount(e) {
   }
 }
 
-// Função para verificar se há duplicatas no array
+// Função para verificar se há duplicatas no array de produtos
 
 function hasDuplicates(array) {
     return (new Set(array)).size !== array.length;
@@ -182,7 +182,7 @@ function startModal(modalId) {
     result += `<table style="width: 100%;"><tr style="border-top: 5px red"><td><b>Produto:</b></td><td><b>Estoque:</b></td><td><b>Quantia requisitada:</b></td></td><td><b>Estoque atualizado:</b></td></tr>`;
     for (i = 0 ; i < requisicao.produtos.length ; i++) {
       result += `<tr><td>${requisicao.produtos[i]}</td><td>${requisicao.estoque[i]}</td><td>${requisicao.qtd_produtos[i]}</td>`;
-      if (requisicao.estoque[i] > requisicao.qtd_produtos[i]) {
+      if (parseInt(requisicao.estoque[i]) >= parseInt(requisicao.qtd_produtos[i])) {
         result += `<td style="color: green;">${requisicao.estoque[i] - requisicao.qtd_produtos[i]}</td></tr>`;
         verify.push(true);
       } else {
@@ -209,6 +209,7 @@ function startModal(modalId) {
         modal.classList.remove('modal-show');
 
         content.innerHTML = '';
+        verify = [];
       }
     });
   }
@@ -220,7 +221,7 @@ function startModal(modalId) {
 $.fn.deleteAction = function() {
   // Laço para dar baixa no estoque
   for (let i = 0 ; i < requisicao.produtos.length ; i++) {
-    requisicao.estoque[i] = requisicao.estoque[i] - requisicao.qtd_produtos[i];
+    requisicao.estoque[i] = parseInt(requisicao.estoque[i]) - parseInt(requisicao.qtd_produtos[i]);
   }
   console.log(requisicao);
   $.ajax({
