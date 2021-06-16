@@ -32,20 +32,27 @@ if (!isset($_SESSION['loggedin'])) {
   <!-- Sidebar -->
   <div class="sidemenu" style="display:none" id="sidebar">
     <button onclick="closemenu()" class="sidemenu-itens sidemenu-close">Fechar &times;</button>
-    <a href="fornecedor.php" target="iframe_1" class="sidemenu-itens">Fornecedores</a>
-    <a href="produto.php" target="iframe_1" class="sidemenu-itens">Produtos</a>
-    <a href="requisicao.php" target="iframe_1" class="sidemenu-itens">Requisições</a>
-    <a href="requisitante.php" target="iframe_1" class="sidemenu-itens"> Requisitante </a>
-    <a href="categoria.php" target="iframe_1" class="sidemenu-itens"> Categoria </a>
-    <a href="users.php" target="iframe_1" class="sidemenu-itens">Usuários</a>
+    <button class="dropdown-btn">Cadastrar
+			<i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-container">
+			<a href="fornecedor.php" target="iframe_1" class="sidemenu-itens">Fornecedor</a>
+			<a href="produto.php" target="iframe_1" class="sidemenu-itens">Produtos</a>
+			<a href="requisicao.php" target="iframe_1" class="sidemenu-itens">Requisição</a>
+			<a href="requisitante.php" target="iframe_1" class="sidemenu-itens"> Requisitante</a>
+			<a href="categoria.php" target="iframe_1" class="sidemenu-itens"> Categoria</a>
+			<a href="users.php" target="iframe_1" class="sidemenu-itens">Usuário</a>
+		</div>
     <button class="dropdown-btn">Relatórios
 			<i class="fa fa-caret-down"></i>
 		</button>
 		<div class="dropdown-container">
 			<a href="relatorios/rel_fornecedor.php" target="iframe_1" class="sidemenu-itens">Fornecedores</a>
 			<a href="relatorios/rel_produto.php" target="iframe_1" class="sidemenu-itens">Produtos</a>
-			<a href="relatorios/rel_categoria.php" target="iframe_1" class="sidemenu-itens">Categorias</a>
 			<a href="relatorios/rel_requisicao.php"" target="iframe_1" class="sidemenu-itens">Requisições</a>
+			<a href="relatorios/rel_requisitante.php" target="iframe_1" class="sidemenu-itens">Requisitantes</a>
+			<a href="relatorios/rel_categoria.php" target="iframe_1" class="sidemenu-itens">Categorias</a>
+			<a href="relatorios/rel_users.php" target="iframe_1" class="sidemenu-itens">Usuários</a>
 		</div>
   </div>
 

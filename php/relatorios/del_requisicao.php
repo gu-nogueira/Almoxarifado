@@ -6,10 +6,15 @@ $reqId = $data['req_id'];
 if ($reqId) {
   include('../connectdb.php');
 
-  $sql = "DELETE FROM fornecedor WHERE idFornecedor= $fornecId";
+  $sql = "DELETE FROM requisicao WHERE idRequisicao = $reqId";
 
   if (mysqli_query($con, $sql)) {
-    echo json_encode(array('status' => 'ok'));
+    $sql = "DELETE FROM requisita WHERE Requisicao_idRequisicao = $reqId";
+    if (mysqli_query($con, $sql)) {
+      echo json_encode(array('status' => 'ok'));
+    } else {
+      echo json_encode(array('error' => $sql . mysqli_error($con)));
+    }
   } else {
     echo json_encode(array('error' => $sql . mysqli_error($con)));
   }

@@ -33,17 +33,17 @@ Projeto para o 5º Ciclo de ADS
 * [x] Delete e update de categorias;
 * [x] Consulta de requisições;
 * [x] Dar baixa nass requisições;
-* [ ] Delete de requisições; `del_requisicao.php`
-* [ ] Função para pegar a data de hoje em `requisicao.php`;
-* [ ] Construir a dashboard na tela `welcome.php`;
-* [ ] Fazer `rel_requisitante.php`;
-* [ ] Fazer `del_requisitante.php`;
+* [x] Delete de requisições; `del_requisicao.php`
+* [x] Função para pegar a data de hoje em `requisicao.php`;
+* [x] Fazer `rel_requisitante.php`;
+* [x] Fazer `del_requisitante.php`;
 * [ ] Fazer `upd_requisitante.php`;
 * [ ] Fazer `rel_users.php`;
 * [ ] Fazer `del_users.php`;
 * [ ] Fazer `upd_users.php`;
+* [ ] Construir a dashboard na tela `welcome.php`;
 * [ ] Fazer `.php`;
 * [ ] Ajustar elementos em `profile.php`;
 * [ ] Ajustar elementos do menu de navegação superior em `home.php`;
-* [ ] Ajustar menu lateral em `home.php`, separar em cadastros e relatórios;
+* [x] Ajustar menu lateral em `home.php`, separar em cadastros e relatórios;
 * [ ] Ajustar inputs;

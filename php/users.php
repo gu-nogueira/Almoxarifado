@@ -47,7 +47,7 @@ if (!isset($_SESSION['loggedin'])) {
     VALUES ('$user', '$password', '$contact')";
 
     if (mysqli_query($con, $sql)) {
-      echo "Ta cadastrado meu cria, beijocas!";
+      echo "Usuário cadastrado com sucesso!";
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }

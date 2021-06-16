@@ -107,6 +107,18 @@ $(document).ready(function() {
     })
 });
 
+// Pega a timezone correta do usuário
+
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
+// Insere no input date o dia de hoje
+
+document.getElementById('data').value = new Date().toDateInputValue();
+
 // Verifica se foi enviado o HTTP POST  
 
 $('#requestForm').submit(function(e){
