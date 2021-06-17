@@ -329,6 +329,99 @@ body.screen {
   float: center; 
 }
 
+/** Dashboard principal */
+
+.dashboard {
+  display: block;
+
+}
+
+.dashboard h1 {
+  margin: 20px 0 20px 0;
+  font-size: 1.75em;
+}
+
+.dashboard .row {
+  display: flex;
+}
+
+.dashboard .card{
+  font-size: 1.2em;
+  flex: 1;
+  margin: 10px;
+  border-radius: 12px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+.dashboard .card text {
+  font-size: 2.2em;
+  transition: 80ms;
+}
+
+.dashboard .card.pink {
+  border-bottom: 5px solid rgb(255, 0, 106);
+  transition: 400ms;
+}
+
+.dashboard .card.pink:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 0.5em rgba(255, 0, 106, 0.377);
+  background-color: rgb(255, 0, 106);
+  color: white;
+  padding-right: 50px;
+  padding-left: 50px;
+  transition: 400ms;
+}
+
+.dashboard .card.green {
+  border-bottom: 5px solid rgb(0, 255, 149);
+  transition: 400ms;
+}
+
+.dashboard .card.green:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 0.5em rgba(0, 255, 149, 0.377);
+  background-color: rgb(0, 255, 149);
+  color: white;
+  padding-right: 50px;
+  padding-left: 50px;
+  transition: 400ms;
+}
+
+.dashboard .card.yellow {
+  border-bottom: 5px solid rgb(255, 208, 0);
+  transition: 400ms;
+}
+
+.dashboard .card.yellow:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 0.5em rgba(255, 208, 0, 0.377);
+  background-color: rgb(255, 208, 0);
+  color: white;
+  padding-right: 50px;
+  padding-left: 50px;
+  transition: 400ms;
+}
+
+.dashboard .card.blue {
+  border-bottom: 5px solid rgb(0, 153, 255);
+  transition: 400ms;
+}
+
+.dashboard .card.blue:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 0.5em rgba(0, 153, 255, 0.377);
+  background-color: rgb(0, 153, 255);
+  color: white;
+  padding-right: 50px;
+  padding-left: 50px;
+  transition: 400ms;
+}
+
+/**/
+
 .selecao_requisicao {
   width: 85%;
   margin: 1px !important;

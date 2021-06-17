@@ -49,6 +49,7 @@ mysqli_close($con);
 </head>
 
 <body class="screen">
+  
       <div class="container">
 				<h1>Atualização de fornecedor: <?=$data['Nome_fantasia']?></h1>
         <br>

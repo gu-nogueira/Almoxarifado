@@ -4,6 +4,21 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: ../index.html');
 	exit;
 }
+
+include('connectdb.php');
+
+$sql = $con->query("SELECT COUNT(*) AS idRequisicao FROM requisicao;");
+$requisicao = $sql->fetch_assoc();
+
+$sql = $con->query("SELECT COUNT(*) AS idRequisita FROM requisita;");
+$estoque = $sql->fetch_assoc();
+
+$sql = $con->query("SELECT COUNT(*) AS idProduto FROM produto;");
+$produto = $sql->fetch_assoc();
+
+$sql = $con->query("SELECT COUNT(*) AS idFornecedor FROM fornecedor;");
+$fornecedor = $sql->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +32,26 @@ if (!isset($_SESSION['loggedin'])) {
 	</head>
 	<body class="screen">
 				<p> Seja bem vindo, <?=$_SESSION['name']?>! </p>
-        <br>
-        Total de produtos cadastrados:
-				<br>
-				Total de novas requisições hoje: 
+        <section class="dashboard">
+					<h1>Resumo geral:</h1>
+					<div class="row">
+						<div class="card pink" onclick="window.location = './relatorios/rel_requisicao.php';">
+							Requisições <br><br>
+							<text> <?= $requisicao['idRequisicao']; ?></text>
+						</div>
+						<div class="card green" onclick="window.location = './relatorios/rel_requisicao.php';">
+							Baixas em estoque <br><br>
+							<text> <?= $estoque['idRequisita']; ?> </text>
+						</div>
+						<div class="card yellow" onclick="window.location = './relatorios/rel_produto.php';">
+							Produtos <br><br>
+							<text> <?= $produto['idProduto']; ?> </text>
+						</div>
+						<div class="card blue" onclick="window.location = './relatorios/rel_fornecedor.php';">
+							Fornecedores <br><br>
+							<text> <?= $fornecedor['idFornecedor']; ?> </text>
+						</div>
+					</div>
+				</section>
 	</body>
 </html>

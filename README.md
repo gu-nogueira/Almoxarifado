@@ -37,12 +37,11 @@ Projeto para o 5º Ciclo de ADS
 * [x] Função para pegar a data de hoje em `requisicao.php`;
 * [x] Fazer `rel_requisitante.php`;
 * [x] Fazer `del_requisitante.php`;
-* [ ] Fazer `upd_requisitante.php`;
-* [ ] Fazer `rel_users.php`;
-* [ ] Fazer `del_users.php`;
-* [ ] Fazer `upd_users.php`;
-* [ ] Construir a dashboard na tela `welcome.php`;
-* [ ] Fazer `.php`;
+* [x] Fazer `upd_requisitante.php`;
+* [x] Fazer `rel_users.php`;
+* [x] Fazer `del_users.php`;
+* [x] Fazer `upd_users.php`;
+* [x] Construir a dashboard na tela `welcome.php`;
 * [ ] Ajustar elementos em `profile.php`;
 * [ ] Ajustar elementos do menu de navegação superior em `home.php`;
 * [x] Ajustar menu lateral em `home.php`, separar em cadastros e relatórios;
