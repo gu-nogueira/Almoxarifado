@@ -45,4 +45,3 @@ Projeto para o 5º Ciclo de ADS
 * [x] Ajustar elementos em `profile.php`;
 * [x] Ajustar elementos do menu de navegação superior em `home.php`;
 * [x] Ajustar menu lateral em `home.php`, separar em cadastros e relatórios;
-* [ ] Ajustar inputs;
