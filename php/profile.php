@@ -15,40 +15,36 @@ $stmt->close();
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Controle de Almoxarifado</title>
-		<link href="../css/reset.css" rel="stylesheet" type="text/css">
-		<link href="../css/style.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-	</head>
-	<body class="loggedin">
-		<nav class="navtop">
-			<div>
-				<div><a href="home.php"><h1>Controle de Almoxarifado</h1></a></div>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
-			</div>
-		</nav>
-		<div class="content">
-			<h2>Perfil do usuário </h2>
-			<div>
-				<p>Your account details are below:</p>
-				<table>
-					<tr>
-						<td>Username:</td>
-						<td><?=$_SESSION['name']?></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><?=$Senha?></td>
-					</tr>
-					<tr>
-						<td>Email:</td>
-						<td><?=$Contato?></td>
-					</tr>
-				</table>
-			</div>
+<head>
+  <meta charset="utf-8">
+  <title>Controle de Almoxarifado</title>
+  <link href="../css/reset.css" rel="stylesheet" type="text/css">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <div class="box">
+    <div class="data-box" style="margin: 0; align-items: center; justify-content: space-between;">
+      <h1 style=>Perfil de usuário</h1>
+    </div>
+    <section style="border-bottom: 1px solid #e0e0e3; padding-top: 20px;"></section>
+    <br>
+    <div class="data-content">
+      <div class="data-box">
+        <section class="data-row">
+          <b class="data-header">Nome</b>
+          <b class="data-header">Contato</b>
+        </section>
+        <section class="data-row" id="data">
+          <p class="data-item"><?= $_SESSION['name']?></p>
+          <p class="data-item"><?= $Contato ?></p>
+        </section>
+      </div>
+      <div class="data-box">
+        <a class="data-edit" href="./relatorios/upd_users.php?id=<?=$_SESSION['id']?>"><i class="fas fa-pencil-alt"></i></a>
+      </div>
 		</div>
-	</body>
+  </div>
+</body>
 </html>

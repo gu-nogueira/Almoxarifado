@@ -5,9 +5,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-body {
-  background-color: #435165;
-}
 .login {
   width: 400px;
   background-color: #ffffff;
@@ -70,7 +67,7 @@ background-color: #2868c7;
 .navtop div {
 	display: flex;
 	margin: 0 auto;
-	width: 1000px;
+	width: 1230px;
 	height: 100%;
 }
 .navtop div h1, .navtop div a {
@@ -84,11 +81,18 @@ background-color: #2868c7;
 	margin: 0;
 	color: #eaebed;
 	font-weight: normal;
+  transition: 300ms;
+}
+
+.fas.fa-home {
+  transition: 300ms;
+  font-size: 25px;
 }
 
 .navtop div h1:hover {
   color: white;
-  transition: 400ms;
+  transition: 300ms;
+  font-size: 26px;
 }
 
 .navtop div a {
@@ -343,12 +347,13 @@ body.screen {
 
 .dashboard .row {
   display: flex;
+  justify-content: space-between;
 }
 
 .dashboard .card{
   font-size: 1.2em;
   flex: 1;
-  margin: 10px;
+  margin: 15px;
   border-radius: 12px;
   padding-top: 80px;
   padding-bottom: 80px;

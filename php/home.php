@@ -19,17 +19,17 @@ if (!isset($_SESSION['loggedin'])) {
 	</head>
 	<body class="loggedin">
 
-    <!-- Cabeçalho -->
+    <!-- Navigation bar -->
 		<nav class="navtop">
     <button class="sidemenu-button" onclick="openmenu()">☰</button>
 			<div>
-        <div><a href="home.php"><h1>Controle de Almoxarifado</h1></a></div>
-				<a href="profile.php"><i class="fas fa-user-circle"></i>Perfil</a>
+        <div><a href="home.php"><i class="fas fa-home"></i><h1>Controle de Almoxarifado</h1></a></div>
+				<a href="profile.php" target="iframe_1"><i class="fas fa-user-circle"></i>Perfil</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
 
-  <!-- Sidebar -->
+  <!-- Side bar -->
   <div class="sidemenu" style="display:none" id="sidebar">
     <button onclick="closemenu()" class="sidemenu-itens sidemenu-close">Fechar &times;</button>
     <button class="dropdown-btn">Cadastrar

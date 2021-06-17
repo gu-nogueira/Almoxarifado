@@ -42,7 +42,7 @@ Projeto para o 5º Ciclo de ADS
 * [x] Fazer `del_users.php`;
 * [x] Fazer `upd_users.php`;
 * [x] Construir a dashboard na tela `welcome.php`;
-* [ ] Ajustar elementos em `profile.php`;
-* [ ] Ajustar elementos do menu de navegação superior em `home.php`;
+* [x] Ajustar elementos em `profile.php`;
+* [x] Ajustar elementos do menu de navegação superior em `home.php`;
 * [x] Ajustar menu lateral em `home.php`, separar em cadastros e relatórios;
 * [ ] Ajustar inputs;
