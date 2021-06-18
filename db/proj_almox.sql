@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Jun-2021 às 04:10
+-- Generation Time: 19-Jun-2021 às 01:37
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -50,18 +50,6 @@ INSERT INTO `categoria` (`idCategoria`, `Descricao_categoria`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `fornece`
---
-
-CREATE TABLE `fornece` (
-  `idFornece` int(11) NOT NULL,
-  `Produto_idProduto` int(11) NOT NULL,
-  `Fornecedor_idFornecedor` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `fornecedor`
 --
 
@@ -83,7 +71,8 @@ INSERT INTO `fornecedor` (`idFornecedor`, `Nome_fantasia`, `Endereco`, `Cidade`,
 (12, 'Guzango Enterprises', 'Rua Logo ali - 1234', 'Botucat - SP', 'contato@guzangoenterprises.com.br', '93.291.292/8282-12'),
 (13, 'Pardinho Pedras', 'Rua do PÃ© Vermeio - 144', 'Pardinho - SP', 'solucoes@pardinhopedras.com.br', '39.438.493/8493-43'),
 (14, 'Only Cartuchos', 'Av. Dom LÃºcio - 392', 'Botucatu - SP', 'contato@onlycartuchos.com.br', '39.458.394/5893-49'),
-(16, 'Nambuco Containers', 'Rua Alguma Por aÃ­ - 132', 'Botucatu - SP', 'contato@nambuco.com.br', '12.312.312/3213-21');
+(16, 'Nambuco Containers', 'Rua Alguma Por aÃ­ - 132', 'Botucatu - SP', 'contato@nambuco.com.br', '12.312.312/3213-21'),
+(18, 'Empresa A', 'Rua A, 123', 'Botucatu - SP', 'contato@empresa.com.br', '48.385.958/0001-34');
 
 -- --------------------------------------------------------
 
@@ -104,12 +93,13 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`idProduto`, `Descricao`, `Qtde_estoque`, `Local_armaz`, `Categoria_idCategoria`) VALUES
-(5, 'Sabonete em pó', 40, 'Quarto do Nambuco, prateleira 2', 1),
-(7, 'Caneta Azul', 25, 'Estante 4, prateleira 5', 2),
-(10, 'Caneta Vermelha', 14, 'Estante 4, prateleira 5', 2),
-(12, 'Caneta Preta', 60, 'Estante 4, prateleira 5', 2),
-(13, 'Sabonate Liquido', 18, 'Quarto do Nambuco, prateleira 2', 1),
-(15, 'Motor a disel', 5, 'Deposito 1, quarto 2', 3);
+(5, 'Sabonete em pó', 6, 'Quarto do Nambuco, prateleira 2', 1),
+(7, 'Caneta Azul', 0, 'Estante 4, prateleira 5', 2),
+(10, 'Caneta Vermelha', 2, 'Estante 4, prateleira 5', 2),
+(20, 'Papel toalha', 20, 'Estante 3, prateleira 5', 1),
+(12, 'Caneta Preta', 1, 'Estante 4, prateleira 5', 2),
+(13, 'Sabonate Liquido', 1, 'Quarto do Nambuco, prateleira 2', 1),
+(15, 'Motor a disel', 2, 'Deposito 1, quarto 2', 3);
 
 -- --------------------------------------------------------
 
@@ -130,9 +120,11 @@ CREATE TABLE `requisicao` (
 INSERT INTO `requisicao` (`idRequisicao`, `Data_retirada`, `Requisitante_idRequisitante`) VALUES
 (21, '2021-05-20', 2),
 (20, '2021-05-19', 1),
-(22, '2021-06-08', 1),
-(23, '2021-06-09', 4),
-(24, '2021-06-23', 4);
+(29, '2021-06-09', 1),
+(28, '2021-07-03', 1),
+(34, '2021-06-22', 7),
+(33, '2021-06-17', 1),
+(27, '2021-06-12', 1);
 
 -- --------------------------------------------------------
 
@@ -158,12 +150,17 @@ INSERT INTO `requisita` (`idRequisita`, `Produto_idProduto`, `Qtde_requisita`, `
 (11, 10, 200, 21),
 (12, 17, 50, 21),
 (13, 13, 5, 21),
-(14, 6, 30, 22),
-(15, 2, 13, 23),
-(16, 11, 5, 23),
-(17, 5, 30, 24),
-(18, 8, 15, 24),
-(19, 12, 3, 24);
+(21, 5, 32, 28),
+(23, 7, 20, 29),
+(22, 12, 23, 28),
+(36, 5, 7, 34),
+(35, 20, 5, 34),
+(34, 10, 2, 33),
+(20, 5, 10, 27),
+(24, 10, 10, 29),
+(25, 12, 20, 29),
+(26, 13, 17, 29),
+(33, 5, 5, 33);
 
 -- --------------------------------------------------------
 
@@ -184,8 +181,7 @@ CREATE TABLE `requisitante` (
 INSERT INTO `requisitante` (`idRequisitante`, `Nome`, `Setor`) VALUES
 (1, 'Gustavo', 'TI'),
 (2, 'Guilherme', 'Compras'),
-(3, 'Caio', 'Contabilidade'),
-(4, 'Túlio', 'Dpto. Pessoal');
+(7, 'Renato', 'TI');
 
 -- --------------------------------------------------------
 
@@ -205,8 +201,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuarios`, `Usuario`, `Senha`, `Contato`) VALUES
-(1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com'),
-(2, 'tulio', '$2y$10$ehGERC7JZR3atOZToclUoub27gJ/Iwpdkzo28nGUKp5S.A4Ros/T2', 'tulioageronutti@gmail.com');
+(4, 'admin', '$2y$10$W1cTw8oio1ypyI5xta5POOWNpxVGMLb68GPAXpsmncp1KCTOEVTyC', 'admin@gmail.com'),
+(6, 'gustavo', '$2y$10$fQrVRSLggFaLZqidCMJX/Oc72SnTZgnfH5Tja9EJl1LTWQXXYE56S', 'gus.h.nogueira@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -217,14 +213,6 @@ INSERT INTO `usuarios` (`idUsuarios`, `Usuario`, `Senha`, `Contato`) VALUES
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idCategoria`);
-
---
--- Indexes for table `fornece`
---
-ALTER TABLE `fornece`
-  ADD PRIMARY KEY (`idFornece`),
-  ADD KEY `fk_Fornece_Produto1_idx` (`Produto_idProduto`),
-  ADD KEY `fk_Fornece_Fornecedor1_idx` (`Fornecedor_idFornecedor`);
 
 --
 -- Indexes for table `fornecedor`
@@ -274,42 +262,37 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `fornece`
---
-ALTER TABLE `fornece`
-  MODIFY `idFornece` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `fornecedor`
 --
 ALTER TABLE `fornecedor`
-  MODIFY `idFornecedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idFornecedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `idProduto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idProduto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `requisicao`
 --
 ALTER TABLE `requisicao`
-  MODIFY `idRequisicao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idRequisicao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `requisita`
 --
 ALTER TABLE `requisita`
-  MODIFY `idRequisita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idRequisita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `requisitante`
 --
 ALTER TABLE `requisitante`
-  MODIFY `idRequisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idRequisitante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

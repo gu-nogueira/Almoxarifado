@@ -23,7 +23,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<nav class="navtop">
     <button class="sidemenu-button" onclick="openmenu()">☰</button>
 			<div>
-        <div><a href="home.php"><i class="fas fa-home"></i><h1>Controle de Almoxarifado</h1></a></div>
+        <div><a href="welcome.php" target="iframe_1"><i class="fas fa-home"></i><h1>Controle de Almoxarifado</h1></a></div>
 				<a href="profile.php" target="iframe_1"><i class="fas fa-user-circle"></i>Perfil</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
@@ -64,6 +64,8 @@ if (!isset($_SESSION['loggedin'])) {
 		</div>
 
     <script>
+
+		openmenu();
 
 		// Movimento do menu lateral
     function openmenu() {

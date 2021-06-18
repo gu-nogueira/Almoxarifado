@@ -1,0 +1,28 @@
+CONTROLE DE ALMOXARIFADO V1.0
+--------------------------------
+
+Login: admin
+Senha: admin
+
+O sistema foi desenvolvido utilizando:
+
+HTML
+CSS
+PHP
+Javascript
+JQuery
+
+E algumas outras bibliotecas:
+
+Jquery mask
+Use Fonts Awesome
+
+Banco de dados:
+
+SQLite (MariaDB);
+
+-------------------------------
+
+OBS: Professor, caso queira o acesso ao nosso repositório no Git Hub, basta me passar (aluno Gustavo Nogueira) o nome do seu usuário do Git Hub para que eu possa adicioná-lo como contribuinte no repositório.
+
+Obrigado!
